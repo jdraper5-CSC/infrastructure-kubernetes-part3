@@ -2,17 +2,19 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mysql
-  labels:
+  
     
 spec:
   replicas: 1
   selector:
     matchLabels:
+      app: app-mysql
       
   serviceName: mysql
   template:
     metadata:
       labels:
+        app: app-mysql
         
     spec:
       containers:
@@ -28,7 +30,7 @@ spec:
         - containerPort: 3306
           name: mysql
         volumeMounts:
-        - name: mysql-persistent-storage
+        - name: mysql-data
           mountPath: /var/lib/mysql
   volumeClaimTemplates:
   - metadata:
@@ -38,4 +40,4 @@ spec:
       storageClassName:
       resources:
         requests:
-          storage:
+          storage: 1Gi
