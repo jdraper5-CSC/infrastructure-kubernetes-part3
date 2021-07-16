@@ -6,7 +6,7 @@ metadata:
     
 spec:
   ports:
-    
+    - port: 80  
   selector:
-    
-  clusterIP: 
+    app: wordpress
+  type: NodePort
