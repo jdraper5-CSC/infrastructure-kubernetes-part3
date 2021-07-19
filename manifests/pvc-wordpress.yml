@@ -1,11 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name:
+  name: mysql-pv-claim
   labels:
+    app: wordpress
     
 spec:
   accessModes:
-
+    - ReadWriteMany
   resources:
-    
+    requests:
+      storage: 1Gi  
